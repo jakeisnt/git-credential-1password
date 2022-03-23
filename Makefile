@@ -31,7 +31,7 @@ GO_FILES = $(shell find . -name '*.go')
 .DEFAULT_GOAL:=help
 
 $(GO_LINTER):
-	curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(GO_BINPATH) v1.31.0
+	curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(GO_BINPATH) v1.45.0
 
 ##@ Build
 
@@ -50,7 +50,7 @@ lint: $(GO_LINTER) ## Lint the go source files
 	$(GO_LINTER) run -c .github/linters/.golangci.yml
 
 lint-super: ## Lint the whole project using GitHub's super-linter
-	docker run -e RUN_LOCAL=true -v $(PWD):/tmp/lint github/super-linter
+	docker run -e RUN_LOCAL=true -e VALIDATE_GO=false -v $(PWD):/tmp/lint github/super-linter
 
 ##@ Cleaning
 

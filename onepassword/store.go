@@ -12,10 +12,10 @@ import (
 )
 
 // StoreCredentials saves new credentials to 1password.
-func (c *Client) StoreCredentials(protocol, host, username, password string) error {
-	creds, err := c.GetCredentials(host)
+func (c *Client) StoreCredentials(protocol, host, path, username, password string) error {
+	creds, err := c.GetCredentials(host, path)
 
-	if err != nil || creds != nil {
+	if creds != nil {
 		return nil
 	}
 
@@ -54,13 +54,18 @@ func (c *Client) StoreCredentials(protocol, host, username, password string) err
 	encData = strings.ReplaceAll(encData, "/", "_") // 63rd char of encoding
 	encData = strings.ReplaceAll(encData, "=", "")  // Remove any trailing '='s
 
+	title := host
+
+	if path != "" {
+		title += "/" + path
+	}
+
 	cmd := exec.Command("op", "--cache", "--session", c.token, // nolint:gosec // TODO: validate
-		"create", "item", "Login", encData,
-		"--title", host, "--tags", "git")
+		"create", "item", "Login", encData, "--title", title, "--tags", "git-credential-1password")
 	cmd.Stdout = &stdout
 	cmd.Stderr = &stderr
 
-	if err := cmd.Run(); err != nil {
+	if err = cmd.Run(); err != nil {
 		return errors.New(stderr.String()) // nolint:goerr113 // TODO: refactor
 	}
 

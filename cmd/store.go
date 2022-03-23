@@ -38,7 +38,7 @@ func storeCredentials(r io.Reader) error {
 		Account: account,
 	}
 
-	if err := c.Login(cache); err != nil {
+	if err = c.Login(cache); err != nil {
 		return err
 	}
 
@@ -47,10 +47,15 @@ func storeCredentials(r io.Reader) error {
 	password, hasPassword := data["password"]
 	protocol, hasProtocol := data["protocol"]
 	username, hasUsername := data["username"]
+	path, hasPath := data["path"]
 
 	if !hasHost || !hasPassword || !hasProtocol || !hasUsername {
 		return nil
 	}
 
-	return c.StoreCredentials(protocol, host, username, password)
+	if !hasPath {
+		path = ""
+	}
+
+	return c.StoreCredentials(protocol, host, path, username, password)
 }

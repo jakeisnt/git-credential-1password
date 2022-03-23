@@ -9,8 +9,7 @@ import (
 	"strings"
 
 	exec "golang.org/x/sys/execabs"
-
-	"golang.org/x/crypto/ssh/terminal"
+	"golang.org/x/term"
 
 	"github.com/develerik/git-credential-1password/git"
 )
@@ -70,7 +69,7 @@ func (c *Client) Login(timeout uint) error { // nolint:funlen // TODO: refactor
 	}
 
 	fd := int(tty.Fd())
-	pass, err := terminal.ReadPassword(fd)
+	pass, err := term.ReadPassword(fd)
 
 	if err != nil {
 		return err

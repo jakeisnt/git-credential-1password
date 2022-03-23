@@ -1,3 +1,4 @@
+---
 before:
   hooks:
     - go mod tidy
@@ -14,8 +15,8 @@ builds:
       - arm
       - arm64
     goarm:
-      - 6
-      - 7
+      - "6"
+      - "7"
     ldflags:
       - -s -w
       - -X github.com/develerik/git-credential-1password/cmd.Version={{.Version}}

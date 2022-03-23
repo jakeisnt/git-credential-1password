@@ -9,13 +9,19 @@ import (
 )
 
 // GetCredentials loads credentials from 1password.
-func (c *Client) GetCredentials(host string) (*Credentials, error) {
+func (c *Client) GetCredentials(host, path string) (*Credentials, error) {
 	var stdout bytes.Buffer
 
 	var stderr bytes.Buffer
 
+	title := host
+
+	if path != "" {
+		title += "/" + path
+	}
+
 	// TODO: handle session expired error
-	cmd := exec.Command("op", "--cache", "--session", c.token, "get", "item", host) // nolint:gosec // TODO: validate
+	cmd := exec.Command("op", "--cache", "--session", c.token, "get", "item", title) // nolint:gosec // TODO: validate
 	cmd.Stdout = &stdout
 	cmd.Stderr = &stderr
 

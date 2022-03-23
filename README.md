@@ -25,9 +25,9 @@ Helper to store git credentials inside 1password.
 
 ### Dependencies
 
-To use this helper you need to install the 1password cli tool (>=1.8.0) ([download](https://support.1password.com/command-line-getting-started/#set-up-the-command-line-tool))
+To use this helper you need to install the 1password command-line tool (>=1.8.0) ([download](https://support.1password.com/command-line-getting-started/#set-up-the-command-line-tool))
 and of course git.  
-You also need to setup the cli tool with your 1password account ([guide](https://support.1password.com/command-line-getting-started/#get-started-with-the-command-line-tool)).
+You also need to setup the command-line tool with your 1password account ([guide](https://support.1password.com/command-line-getting-started/#get-started-with-the-command-line-tool)).
 
 ### Arch Linux
 
@@ -82,7 +82,7 @@ See also the list of [contributors](https://github.com/develerik/git-credential-
 
 ## Acknowledgements
 
-- [1Password](https://1password.com) for their awesome [cli tool](https://1password.com/downloads/command-line)
+- [1Password](https://1password.com) for their awesome [command-line tool](https://1password.com/downloads/command-line)
 - [Steve (acahir)](https://github.com/acahir) for his [python implementation](https://github.com/acahir/git-credential-1password)
 of a 1password credential helper which inspired me to create this project
 - [Netlify](https://www.netlify.com) for their [netlify credential helper](https://github.com/netlify/netlify-credential-helper)

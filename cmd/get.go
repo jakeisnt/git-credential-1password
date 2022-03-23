@@ -43,13 +43,18 @@ func getCredentials(r io.Reader, w io.Writer) error {
 		return err
 	}
 
-	host, exist := data["host"]
+	host, hostExist := data["host"]
+	path, pathExist := data["path"]
 
-	if !exist {
+	if !hostExist {
 		return fmt.Errorf("missing host to check credentials: %v", data) // nolint:goerr113 // TODO: refactor
 	}
 
-	creds, err := c.GetCredentials(host)
+	if !pathExist {
+		path = ""
+	}
+
+	creds, err := c.GetCredentials(host, path)
 
 	if err != nil {
 		return err

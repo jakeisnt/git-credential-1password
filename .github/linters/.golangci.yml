@@ -10,7 +10,8 @@ run:
 linters:
   disable-all: true
   enable:
-    # Simple linter to check that your code does not contain non-ASCII identifiers
+    # Simple linter to check that your code does not contain non-ASCII
+    # identifiers
     - asciicheck
     # Checks whether HTTP response body is closed successfully
     - bodyclose
@@ -43,10 +44,9 @@ linters:
     - godox
     # Golang linter to check the errors handling expressions
     - goerr113
-    # Goimports does everything that gofmt does. Additionally it checks unused imports
+    # Goimports does everything that gofmt does.
+    # Additionally it checks unused imports
     - goimports
-    # Golint differs from gofmt. Gofmt reformats Go source code, whereas golint prints out style mistakes
-    - golint
     # An analyzer to detect magic numbers
     - gomnd
     # Checks that printf-like functions are named with `f` at the end
@@ -57,12 +57,8 @@ linters:
     - gosimple
     # Detects when assignments to existing variables are not used
     - ineffassign
-    # Linter that suggests narrower interface types
-    - interfacer
     # Reports long lines
     - lll
-    # Tool to detect Go structs that would take less memory if their fields were sorted
-    - maligned
     # Finds commonly misspelled English words in comments
     - misspell
     # Finds naked returns in functions greater than a specified function length
@@ -73,9 +69,9 @@ linters:
     - noctx
     # Reports ill-formed or insufficient nolint directives
     - nolintlint
-    # Scopelint checks for unpinned variables in go programs
-    - scopelint
-    # Staticcheck is a go vet on steroids, applying a ton of static analysis checks
+    - revive
+    # Staticcheck is a go vet on steroids, applying a ton of static
+    # analysis checks
     - staticcheck
     # Finds unused struct fields
     - structcheck
@@ -104,7 +100,8 @@ linters-settings:
     # report about assignment of errors to blank identifier
     check-blank: true
   exhaustive:
-    # indicates that switch statements are to be considered exhaustive if a 'default' case is present
+    # indicates that switch statements are to be considered exhaustive if
+    # a 'default' case is present
     default-signifies-exhaustive: true
   funlen:
     lines: 60
@@ -144,7 +141,13 @@ linters-settings:
     settings:
       mnd:
         # the list of enabled checks
-        checks: argument,case,condition,operation,return,assign
+        checks:
+          - argument
+          - case
+          - condition
+          - operation
+          - return
+          - assign
   lll:
     # max line length, lines longer will be reported
     line-length: 120
@@ -157,7 +160,8 @@ linters-settings:
     # correct spellings using locale preferences for US
     locale: US
   nakedret:
-    # make an issue if func has more lines of code than this setting and it has naked returns
+    # make an issue if func has more lines of code than this setting and it
+    # has naked returns
     max-func-lines: 30
   nestif:
     # minimal complexity of if statements to report

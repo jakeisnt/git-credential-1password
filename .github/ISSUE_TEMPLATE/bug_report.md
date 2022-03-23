@@ -25,7 +25,7 @@ Steps to reproduce the behavior:
 
 ### Screenshots
 
- <!--If applicable, add screenshots to help explain your problem. -->
+<!--If applicable, add screenshots to help explain your problem. -->
 
 ### Additional context
 
