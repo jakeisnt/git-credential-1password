@@ -12,6 +12,10 @@ type response struct {
 	} `json:"details"`
 }
 
+type response2 struct {
+	Fields []field2 `json:"fields"`
+}
+
 type login struct {
 	Fields []field `json:"fields"`
 	Notes  string  `json:"notesPlain"`
@@ -22,4 +26,9 @@ type field struct {
 	Value       string `json:"value"`
 	Type        string `json:"type"`
 	Designation string `json:"designation"`
+}
+
+type field2 struct {
+	Name  string `json:"label"`
+	Value string `json:"value"`
 }

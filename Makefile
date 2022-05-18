@@ -31,11 +31,11 @@ GO_FILES = $(shell find . -name '*.go')
 .DEFAULT_GOAL:=help
 
 $(GO_LINTER):
-	curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(GO_BINPATH) v1.45.0
+	curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(GO_BINPATH) v1.46.2
 
 ##@ Build
 
-.PHONY: git-credential-1password
+.PHONY: credential-helper
 
 credential-helper: bin/git-credential-1password$(SUFFIX) ## Build git-credential-1password
 
@@ -44,13 +44,10 @@ bin/git-credential-1password$(SUFFIX): $(GO_FILES)
 
 ##@ Code Style
 
-.PHONY: lint lint-super
+.PHONY: lint
 
 lint: $(GO_LINTER) ## Lint the go source files
-	$(GO_LINTER) run -c .github/linters/.golangci.yml
-
-lint-super: ## Lint the whole project using GitHub's super-linter
-	docker run -e RUN_LOCAL=true -e VALIDATE_GO=false -v $(PWD):/tmp/lint github/super-linter
+	$(GO_LINTER) run
 
 ##@ Cleaning
 

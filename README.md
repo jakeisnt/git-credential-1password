@@ -3,7 +3,6 @@
 [![license](https://img.shields.io/github/license/develerik/git-credential-1password.svg)](LICENSE)
 [![Go Report Card](https://goreportcard.com/badge/github.com/develerik/git-credential-1password)](https://goreportcard.com/report/github.com/develerik/git-credential-1password)
 [![CodeQL](https://github.com/develerik/git-credential-1password/workflows/CodeQL/badge.svg)](https://github.com/develerik/git-credential-1password/actions?query=workflow%3ACodeQL)
-[![Code Style](https://github.com/develerik/git-credential-1password/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/develerik/git-credential-1password/actions?query=workflow%3A%22Lint+Code+Base%22)
 
 Helper to store git credentials inside 1password.
 
@@ -25,7 +24,7 @@ Helper to store git credentials inside 1password.
 
 ### Dependencies
 
-To use this helper you need to install the 1password command-line tool (>=1.8.0) ([download](https://support.1password.com/command-line-getting-started/#set-up-the-command-line-tool))
+To use this helper you need to install the 1password command-line tool (>=1.8.0, support for <2.0.0 may be dropped in the future) ([download](https://support.1password.com/command-line-getting-started/#set-up-the-command-line-tool))
 and of course git.  
 You also need to setup the command-line tool with your 1password account ([guide](https://support.1password.com/command-line-getting-started/#get-started-with-the-command-line-tool)).
 
@@ -36,7 +35,6 @@ On Arch Linux the following packages are available at the AUR:
 - `git-credential-1password`: The latest release
 - `git-credential-1password-bin`: The latest release (prebuild)
 - `git-credential-1password-git`: Builds the current `main` branch
-- `git-credential-1password-dev-git`: Builds the current `develop` branch
 
 ### From Source
 
@@ -66,7 +64,7 @@ more people can benefit from it.
 
 ## Roadmap
 
-- Support selecting the vault to use (maybe even multiple)
+- Support selecting the vault to use
 - Maybe an interactive mode for each operation
 <!--No changes are currently planned.-->
 

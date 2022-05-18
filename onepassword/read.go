@@ -8,8 +8,13 @@ import (
 	exec "golang.org/x/sys/execabs"
 )
 
+const (
+	usernameLabel = "username"
+	passwordLabel = "password"
+)
+
 // GetCredentials loads credentials from 1password.
-func (c *Client) GetCredentials(host, path string) (*Credentials, error) {
+func (c *Client) GetCredentials(host, path string) (*Credentials, error) { // nolint:funlen,gocognit,gocyclo,lll // TODO: refactor
 	var stdout bytes.Buffer
 
 	var stderr bytes.Buffer
@@ -20,8 +25,18 @@ func (c *Client) GetCredentials(host, path string) (*Credentials, error) {
 		title += "/" + path
 	}
 
+	args := []string{"--cache", "--session", c.token}
+
+	if isV2() {
+		args = append(args, "item", "get", "--format", "json")
+	} else {
+		args = append(args, "get", "item")
+	}
+
+	args = append(args, title)
+
 	// TODO: handle session expired error
-	cmd := exec.Command("op", "--cache", "--session", c.token, "get", "item", title) // nolint:gosec // TODO: validate
+	cmd := exec.Command("op", args...)
 	cmd.Stdout = &stdout
 	cmd.Stderr = &stderr
 
@@ -29,22 +44,39 @@ func (c *Client) GetCredentials(host, path string) (*Credentials, error) {
 		return nil, errors.New(stderr.String()) // nolint:goerr113 // TODO: refactor
 	}
 
-	var res response
-	if err := json.Unmarshal(stdout.Bytes(), &res); err != nil {
-		return nil, err
-	}
-
 	var username string
 
 	var password string
 
-	for _, field := range res.Details.Fields {
-		if field.Name == "username" {
-			username = field.Value
+	if isV2() { // nolint:nestif // TODO: refactor
+		var res response2
+		if err := json.Unmarshal(stdout.Bytes(), &res); err != nil {
+			return nil, err
 		}
 
-		if field.Name == "password" {
-			password = field.Value
+		for _, field := range res.Fields {
+			if field.Name == usernameLabel {
+				username = field.Value
+			}
+
+			if field.Name == passwordLabel {
+				password = field.Value
+			}
+		}
+	} else {
+		var res response
+		if err := json.Unmarshal(stdout.Bytes(), &res); err != nil {
+			return nil, err
+		}
+
+		for _, field := range res.Details.Fields {
+			if field.Name == usernameLabel {
+				username = field.Value
+			}
+
+			if field.Name == passwordLabel {
+				password = field.Value
+			}
 		}
 	}
 

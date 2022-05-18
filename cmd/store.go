@@ -38,7 +38,7 @@ func storeCredentials(r io.Reader) error {
 		Account: account,
 	}
 
-	if err = c.Login(cache); err != nil {
+	if err := c.Login(cache); err != nil {
 		return err
 	}
 

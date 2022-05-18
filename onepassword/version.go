@@ -26,3 +26,11 @@ func GetVersion() (string, error) {
 
 	return version, nil
 }
+
+func isV2() bool {
+	if version, err := GetVersion(); err == nil && strings.HasPrefix(version, "2.") {
+		return true
+	}
+
+	return false
+}

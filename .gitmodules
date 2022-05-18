@@ -1,0 +1,9 @@
+[submodule "aur/git-credential-1password-git"]
+	path = aur/git-credential-1password-git
+	url = https://aur.archlinux.org/git-credential-1password-git.git
+[submodule "aur/git-credential-1password"]
+	path = aur/git-credential-1password
+	url = https://aur.archlinux.org/git-credential-1password.git
+[submodule "aur/git-credential-1password-bin"]
+	path = aur/git-credential-1password-bin
+	url = https://aur.archlinux.org/git-credential-1password-bin.git
