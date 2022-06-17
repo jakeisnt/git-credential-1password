@@ -49,6 +49,7 @@ brews:
     tap:
       owner: develerik
       name: homebrew-tools
+      token: "{{ .Env.HOMEBREW_TAP_GITHUB_TOKEN }}"
     description: "Helper to store git credentials inside 1password."
     license: "ISC"
     folder: Formula
