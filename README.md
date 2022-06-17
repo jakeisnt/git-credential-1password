@@ -6,20 +6,6 @@
 
 Helper to store git credentials inside 1password.
 
-## Table of Contents
-
-- [Installation](#installation)
-  - [Dependencies](#dependencies)
-  - [Arch Linux](#arch-linux)
-  - [From Source](#from-source)
-- [Usage](#usage)
-- [Support](#support)
-- [Roadmap](#roadmap)
-- [Contributing](#contributing)
-- [Maintainers](#maintainers)
-- [Acknowledgements](#acknowledgements)
-- [License](#license)
-
 ## Installation
 
 ### Dependencies
@@ -27,6 +13,13 @@ Helper to store git credentials inside 1password.
 To use this helper you need to install the 1password command-line tool (>=1.8.0, support for <2.0.0 may be dropped in the future) ([download](https://support.1password.com/command-line-getting-started/#set-up-the-command-line-tool))
 and of course git.  
 You also need to setup the command-line tool with your 1password account ([guide](https://support.1password.com/command-line-getting-started/#get-started-with-the-command-line-tool)).
+
+### Homebrew
+
+```shell
+brew tap develerik/tools
+brew install git-credential-1password
+```
 
 ### Arch Linux
 

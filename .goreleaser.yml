@@ -44,3 +44,13 @@ changelog:
       order: 1
     - title: Others
       order: 999
+brews:
+  - homepage: https://github.com/develerik/homebrew-tools
+    tap:
+      owner: develerik
+      name: homebrew-tools
+    description: "Helper to store git credentials inside 1password."
+    license: "ISC"
+    folder: Formula
+    dependencies:
+      - name: git
