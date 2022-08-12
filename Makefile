@@ -31,7 +31,7 @@ GO_FILES = $(shell find . -name '*.go')
 .DEFAULT_GOAL:=help
 
 $(GO_LINTER):
-	curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(GO_BINPATH) v1.46.2
+	curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(GO_BINPATH) v1.48.0
 
 ##@ Build
 

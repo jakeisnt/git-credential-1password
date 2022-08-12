@@ -36,6 +36,7 @@ func storeCredentials(r io.Reader) error {
 
 	c := onepassword.Client{
 		Account: account,
+		Vault:   vault,
 	}
 
 	if err := c.Login(cache); err != nil {

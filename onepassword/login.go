@@ -36,7 +36,7 @@ func getTTYPath() (string, error) {
 }
 
 // Login to 1password.
-func (c *Client) Login(timeout uint) error { // nolint:funlen,gocognit,gocyclo // TODO: refactor
+func (c *Client) Login(timeout uint) error { //nolint:funlen,gocyclo // TODO: refactor
 	var err error
 	c.token, err = git.GetFromCache(c.Account)
 
@@ -87,7 +87,7 @@ func (c *Client) Login(timeout uint) error { // nolint:funlen,gocognit,gocyclo /
 	cmd.Stderr = &stderr
 
 	if err = cmd.Run(); err != nil {
-		return fmt.Errorf("\n%s", stderr.String()) // nolint:goerr113 // TODO: correctly handle error
+		return fmt.Errorf("\n%s", stderr.String()) //nolint:goerr113 // TODO: correctly handle error
 	}
 
 	token := stdout.String()

@@ -6,5 +6,5 @@ import (
 )
 
 func main() {
-	_ = cmd.Execute() // nolint:errcheck // error is displayed by cobra
+	_ = cmd.Execute() //nolint:errcheck // error is displayed by cobra
 }

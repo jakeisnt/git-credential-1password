@@ -29,7 +29,7 @@ func GetFromCache(account string) (string, error) {
 	stdin.Write(eof)
 
 	if err := cmd.Run(); err != nil {
-		return "", errors.New(stderr.String()) // nolint:goerr113 // TODO: refactor
+		return "", errors.New(stderr.String()) //nolint:goerr113 // TODO: refactor
 	}
 
 	data, err := ReadInput(bytes.NewReader(stdout.Bytes()))
@@ -63,7 +63,7 @@ func StoreInCache(account, token string, timeout uint) error {
 	stdin.Write(eof)
 
 	if err := cmd.Run(); err != nil {
-		return errors.New(stderr.String()) // nolint:goerr113 // TODO: refactor
+		return errors.New(stderr.String()) //nolint:goerr113 // TODO: refactor
 	}
 
 	return nil

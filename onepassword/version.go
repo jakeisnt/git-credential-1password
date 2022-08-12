@@ -19,7 +19,7 @@ func GetVersion() (string, error) {
 	cmd.Stderr = &stderr
 
 	if err := cmd.Run(); err != nil {
-		return "", errors.New(stderr.String()) // nolint:goerr113 // TODO: refactor
+		return "", errors.New(stderr.String()) //nolint:goerr113 // TODO: refactor
 	}
 
 	version := strings.TrimSuffix(stdout.String(), "\n")

@@ -37,6 +37,7 @@ func getCredentials(r io.Reader, w io.Writer) error {
 
 	c := onepassword.Client{
 		Account: account,
+		Vault:   vault,
 	}
 
 	if err := c.Login(cache); err != nil {
@@ -47,7 +48,7 @@ func getCredentials(r io.Reader, w io.Writer) error {
 	path, pathExist := data["path"]
 
 	if !hostExist {
-		return fmt.Errorf("missing host to check credentials: %v", data) // nolint:goerr113 // TODO: refactor
+		return fmt.Errorf("missing host to check credentials: %v", data) //nolint:goerr113 // TODO: refactor
 	}
 
 	if !pathExist {

@@ -9,6 +9,7 @@ var (
 	account string
 	cache   uint
 	archive bool
+	vault   string
 )
 
 // rootCmd represents the base command when called without any subcommands.
@@ -63,6 +64,9 @@ func Execute() error {
 
 	rootCmd.PersistentFlags().BoolVar(&archive, "archive-erased", false,
 		"archive erased credentials instead of deleting them")
+
+	rootCmd.PersistentFlags().StringVarP(&vault, "vault", "v", "",
+		"the vault to use for your git credentials")
 
 	return rootCmd.Execute()
 }

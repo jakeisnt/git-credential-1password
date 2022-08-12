@@ -57,7 +57,6 @@ more people can benefit from it.
 
 ## Roadmap
 
-- Support selecting the vault to use
 - Maybe an interactive mode for each operation
 <!--No changes are currently planned.-->
 

@@ -14,7 +14,7 @@ const (
 )
 
 // GetCredentials loads credentials from 1password.
-func (c *Client) GetCredentials(host, path string) (*Credentials, error) { // nolint:funlen,gocognit,gocyclo,lll // TODO: refactor
+func (c *Client) GetCredentials(host, path string) (*Credentials, error) { //nolint:funlen,gocognit,gocyclo,lll // TODO: refactor
 	var stdout bytes.Buffer
 
 	var stderr bytes.Buffer
@@ -25,7 +25,13 @@ func (c *Client) GetCredentials(host, path string) (*Credentials, error) { // no
 		title += "/" + path
 	}
 
-	args := []string{"--cache", "--session", c.token, "item", "get", "--format", "json", title}
+	args := []string{"--cache", "--session", c.token, "item", "get", "--format", "json"}
+
+	if c.Vault != "" {
+		args = append(args, "--vault", c.Vault)
+	}
+
+	args = append(args, title)
 
 	// TODO: handle session expired error
 	cmd := exec.Command("op", args...)
@@ -33,7 +39,7 @@ func (c *Client) GetCredentials(host, path string) (*Credentials, error) { // no
 	cmd.Stderr = &stderr
 
 	if err := cmd.Run(); err != nil {
-		return nil, errors.New(stderr.String()) // nolint:goerr113 // TODO: refactor
+		return nil, errors.New(stderr.String()) //nolint:goerr113 // TODO: refactor
 	}
 
 	var username string

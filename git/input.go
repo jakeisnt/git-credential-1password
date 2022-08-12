@@ -13,7 +13,7 @@ func ReadInput(r io.Reader) (map[string]string, error) {
 	data := map[string]string{}
 
 	for scan.Scan() {
-		kv := bytes.SplitN(scan.Bytes(), []byte("="), 2) // nolint:gomnd // key=value
+		kv := bytes.SplitN(scan.Bytes(), []byte("="), 2) //nolint:gomnd // key=value
 		if len(kv) > 1 {
 			data[string(kv[0])] = string(kv[1])
 		}

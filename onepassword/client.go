@@ -4,4 +4,5 @@ package onepassword
 type Client struct {
 	token   string
 	Account string
+	Vault   string
 }

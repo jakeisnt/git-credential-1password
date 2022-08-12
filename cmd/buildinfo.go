@@ -4,11 +4,11 @@ import "fmt"
 
 var (
 	// Version is the application's version.
-	Version string // nolint:gochecknoglobals // needs to be public
+	Version string //nolint:gochecknoglobals // needs to be public
 	// Build is the current git Commit.
-	Build string // nolint:gochecknoglobals // needs to be public
+	Build string //nolint:gochecknoglobals // needs to be public
 	// Date is the current date.
-	Date string // nolint:gochecknoglobals // needs to be public
+	Date string //nolint:gochecknoglobals // needs to be public
 )
 
 func getVersion() string {
