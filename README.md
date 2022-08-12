@@ -58,7 +58,6 @@ more people can benefit from it.
 ## Roadmap
 
 - Support selecting the vault to use
-- Add option to archive deleted credentials instead of deleting them
 - Maybe an interactive mode for each operation
 <!--No changes are currently planned.-->
 

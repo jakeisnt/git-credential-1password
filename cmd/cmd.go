@@ -5,8 +5,11 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var account string
-var cache uint
+var (
+	account string
+	cache   uint
+	archive bool
+)
 
 // rootCmd represents the base command when called without any subcommands.
 var rootCmd = &cobra.Command{
@@ -57,6 +60,9 @@ func Execute() error {
 
 	rootCmd.PersistentFlags().UintVarP(&cache, "cache", "c", 0,
 		"enable the master password cache and configure the timeout")
+
+	rootCmd.PersistentFlags().BoolVar(&archive, "archive-erased", false,
+		"archive erased credentials instead of deleting them")
 
 	return rootCmd.Execute()
 }

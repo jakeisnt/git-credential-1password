@@ -42,5 +42,5 @@ func deleteCredentials(r io.Reader) error {
 		return err
 	}
 
-	return c.DeleteCredentials(data["protocol"], data["host"])
+	return c.DeleteCredentials(data["protocol"], data["host"], archive)
 }
