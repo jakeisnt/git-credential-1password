@@ -1,5 +1,8 @@
 ---
 project_name: git-credential-1password
+announce:
+  twitter:
+    enabled: true
 before:
   hooks:
     - go mod tidy
