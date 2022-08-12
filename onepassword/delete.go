@@ -13,15 +13,7 @@ func (c *Client) DeleteCredentials(_, host string) error {
 
 	var stderr bytes.Buffer
 
-	args := []string{"--session", c.token}
-
-	if isV2() {
-		args = append(args, "item", "delete", "--format", "json")
-	} else {
-		args = append(args, "delete", "item")
-	}
-
-	args = append(args, host)
+	args := []string{"--session", c.token, "item", "delete", "--format", "json", host}
 
 	cmd := exec.Command("op", args...)
 	cmd.Stdout = &stdout

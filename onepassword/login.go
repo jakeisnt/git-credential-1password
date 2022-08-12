@@ -79,13 +79,7 @@ func (c *Client) Login(timeout uint) error { // nolint:funlen,gocognit,gocyclo /
 
 	stdin.Write([]byte(fmt.Sprintf("%s\n", pass)))
 
-	args := []string{"signin", "--cache", "--raw"}
-
-	if isV2() {
-		args = append(args, "--account")
-	}
-
-	args = append(args, c.Account)
+	args := []string{"signin", "--cache", "--raw", "--account", c.Account}
 
 	cmd := exec.Command("op", args...)
 	cmd.Stdout = &stdout
